@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import queryString from "query-string";
+import io from "socket.io-client";
 
-const Chat = () => {
+let socket;
+
+const Chat: React.FC<ILocation> = ({ location }) => {
+	const [name, setName] = useState<string | string[] | null>("");
+	const [room, setRoom] = useState<string | string[] | null>("");
+	const ENDPOINT = `localhost:5000`;
+
+	useEffect(() => {
+		const { name, room } = queryString.parse(location.search);
+
+		socket = io(ENDPOINT);
+
+		setName(name);
+		setRoom(room);
+
+		socket.emit("join", { name, room });
+
+		return () => {};
+	}, [ENDPOINT, location.search]);
 	return <h1>Chat</h1>;
 };
 
