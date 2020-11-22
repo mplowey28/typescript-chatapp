@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 
-let socket;
+let socket: SocketIOClient.Socket;
 
 const Chat: React.FC<ILocation> = ({ location }) => {
 	const [name, setName] = useState<string | string[] | null>("");
@@ -17,9 +17,13 @@ const Chat: React.FC<ILocation> = ({ location }) => {
 		setName(name);
 		setRoom(room);
 
-		socket.emit("join", { name, room });
+		socket.emit("join", { name, room }, () => {});
 
-		return () => {};
+		return () => {
+			socket.emit("disconnect");
+
+			socket.off();
+		};
 	}, [ENDPOINT, location.search]);
 	return <h1>Chat</h1>;
 };

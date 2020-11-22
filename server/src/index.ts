@@ -1,5 +1,5 @@
 import * as express from "express";
-const socketio = require("socket.io");
+import ioserver, { Socket } from "socket.io";
 const http = require("http");
 
 const PORT = process.env.PORT || 5000;
@@ -8,10 +8,12 @@ const router = require("./router");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = ioserver(server);
 
-io.on("connection", (socket: any) => {
+io.on("connection", (socket: Socket) => {
 	console.log("There is a new connection");
+
+	socket.on("join", ({ name, room }, callback) => {});
 
 	socket.on("disconnect", () => {
 		console.log("user has left");
