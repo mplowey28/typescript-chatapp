@@ -1,4 +1,10 @@
-const users = [];
+let users = [];
+
+interface IUser {
+	id: string;
+	name: string;
+	room: string;
+}
 
 const addUser = ({ id, name, room }) => {
 	name = name.trim().toLowerCast();
