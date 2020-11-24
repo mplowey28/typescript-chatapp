@@ -1,5 +1,5 @@
 import { IUserObject, IUsers } from "./types";
-let users: IUsers;
+let users: IUsers = [];
 
 const addUser = ({ id, name, room }: IUserObject) => {
 	name = name.trim().toLowerCase();
@@ -15,7 +15,6 @@ const addUser = ({ id, name, room }: IUserObject) => {
 
 	const user = { id, name, room };
 	users.push(user);
-	console.log(users);
 	return { user };
 };
 
