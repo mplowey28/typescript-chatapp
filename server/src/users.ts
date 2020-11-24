@@ -1,14 +1,9 @@
-let users = [];
+import { IUser } from "./types";
+let users: string[] = [];
 
-interface IUser {
-	id: string;
-	name: string;
-	room: string;
-}
-
-const addUser = ({ id, name, room }) => {
-	name = name.trim().toLowerCast();
-	room = room.trim().toLowerCast();
+const addUser = ({ id, name, room }: IUser) => {
+	name = name.trim().toLowerCase();
+	room = room.trim().toLowerCase();
 
 	const existingUser = users.find();
 };
