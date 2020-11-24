@@ -9,3 +9,10 @@ interface IName {
 interface IRoom {
 	room: string;
 }
+
+interface IMessageObject {
+	user: string;
+	text: string;
+}
+
+interface IMessages extends Array<IMessageObject> {}
