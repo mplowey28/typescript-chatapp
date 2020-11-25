@@ -1,12 +1,14 @@
 import React, { useState, useEffect, SyntheticEvent } from "react";
 import queryString from "query-string";
 import * as io from "socket.io-client";
+import InfoBar from "../InfoBar/InfoBar";
+import "./Chat.css";
 
 let socket: SocketIOClient.Socket;
 
 const Chat: React.FC<ILocation> = ({ location }) => {
-	const [name, setName] = useState<string | string[] | null>("");
-	const [room, setRoom] = useState<string | string[] | null>("");
+	const [name, setName] = useState<Name>("");
+	const [room, setRoom] = useState<Room>("");
 	const [message, setMessage] = useState<any>("");
 	const [messages, setMessages] = useState<IMessages>([]);
 	const ENDPOINT = `localhost:5000`;
@@ -41,6 +43,7 @@ const Chat: React.FC<ILocation> = ({ location }) => {
 	return (
 		<div className='outerContainer'>
 			<div className='container'>
+				<InfoBar room={room} />
 				<input
 					value={message}
 					type='text'
