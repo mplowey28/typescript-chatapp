@@ -1,7 +1,7 @@
 import React from "react";
 import "./InfoBar.css";
 import { GoPrimitiveDot } from "react-icons/go";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiOutlineCloseSquare } from "react-icons/ai";
 
 type RoomProps = {
 	room: string | string[] | null;
@@ -16,7 +16,7 @@ const InfoBar: React.FC<RoomProps> = ({ room }) => {
 			</div>
 			<div className='rightInnerContainer'>
 				<a href='/'>
-					<AiFillCloseCircle style={{ fill: "red", color: "white" }} />
+					<AiOutlineCloseSquare style={{ fill: "red", color: "white" }} />
 				</a>
 			</div>
 		</div>
