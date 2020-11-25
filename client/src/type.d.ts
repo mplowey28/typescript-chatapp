@@ -11,3 +11,9 @@ interface IMessageObject {
 }
 
 interface IMessages extends Array<IMessageObject> {}
+
+type MessageProps = {
+	message: any;
+	setMessage(arg: string): void;
+	sendMessage(arg: SyntheticEvent): void;
+};
