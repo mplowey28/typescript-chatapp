@@ -6,7 +6,7 @@ import "./Message.css";
 const Message: React.FC<MessageData> = ({ message: { user, text }, name }) => {
 	let isSentByCurrentUser = false;
 
-	const trimmedName = name.trim().toLowerCase();
+	const trimmedName = name ? name.trim().toLowerCase() : null;
 
 	if (user === trimmedName) {
 		isSentByCurrentUser = true;

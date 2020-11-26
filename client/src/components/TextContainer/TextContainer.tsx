@@ -1,10 +1,8 @@
 import React from "react";
-
-import onlineIcon from "../../icons/onlineIcon.png";
-
+import { GoPrimitiveDot } from "react-icons/go";
 import "./TextContainer.css";
 
-const TextContainer: React.FC<Users> = ({ users }) => (
+const TextContainer = ({ users }) => (
 	<div className='textContainer'>
 		<div>
 			<h1>
@@ -34,7 +32,7 @@ const TextContainer: React.FC<Users> = ({ users }) => (
 						{users.map(({ name }) => (
 							<div key={name} className='activeItem'>
 								{name}
-								<img alt='Online Icon' src={onlineIcon} />
+								<GoPrimitiveDot style={{ fill: "green", marginRight: "5%" }} />
 							</div>
 						))}
 					</h2>
