@@ -12,6 +12,7 @@ let socket: SocketIOClient.Socket;
 const Chat: React.FC<ILocation> = ({ location }) => {
 	const [name, setName] = useState<Name>("");
 	const [room, setRoom] = useState<Room>("");
+	const [users, setUsers] = useState<Users>([]);
 	const [message, setMessage] = useState<any>("");
 	const [messages, setMessages] = useState<IMessages>([]);
 	const ENDPOINT = `localhost:5000`;
@@ -27,8 +28,6 @@ const Chat: React.FC<ILocation> = ({ location }) => {
 		socket.emit("join", { name, room }, () => {});
 		return () => {
 			socket.emit("disconnect");
-
-			//socket.off();
 		};
 	}, [ENDPOINT, location.search]);
 
@@ -36,7 +35,11 @@ const Chat: React.FC<ILocation> = ({ location }) => {
 		socket.on("message", (message: { user: string; text: string }) => {
 			setMessages([...messages, message]);
 		});
-	}, [messages]);
+
+		socket.on("roomData", ({ users }) => {
+			setUsers(users);
+		});
+	}, []);
 
 	const sendMessage = (event: SyntheticEvent) => {
 		event.preventDefault();
@@ -47,7 +50,7 @@ const Chat: React.FC<ILocation> = ({ location }) => {
 		<div className='outerContainer'>
 			<div className='container'>
 				<InfoBar room={room} />
-				<Messages messages={messages} />
+				<Messages messages={messages} name={name} />
 				<Input
 					message={message}
 					setMessage={setMessage}

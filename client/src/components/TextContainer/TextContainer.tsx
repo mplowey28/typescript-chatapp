@@ -4,7 +4,7 @@ import onlineIcon from "../../icons/onlineIcon.png";
 
 import "./TextContainer.css";
 
-const TextContainer = ({ users }) => (
+const TextContainer: React.FC<Users> = ({ users }) => (
 	<div className='textContainer'>
 		<div>
 			<h1>
