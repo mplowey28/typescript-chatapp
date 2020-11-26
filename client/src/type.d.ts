@@ -1,6 +1,3 @@
-type Room = string | string[] | null;
-type Name = string;
-
 interface ILocation {
 	location: { search: string };
 }

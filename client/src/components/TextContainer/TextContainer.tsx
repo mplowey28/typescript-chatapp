@@ -2,7 +2,7 @@ import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import "./TextContainer.css";
 
-const TextContainer = ({ users }) => (
+const TextContainer = ({ users }: any) => (
 	<div className='textContainer'>
 		<div>
 			<h1>
@@ -29,7 +29,7 @@ const TextContainer = ({ users }) => (
 				<h1>People currently chatting:</h1>
 				<div className='activeContainer'>
 					<h2>
-						{users.map(({ name }) => (
+						{users.map(({ name }: any) => (
 							<div key={name} className='activeItem'>
 								{name}
 								<GoPrimitiveDot style={{ fill: "green", marginRight: "5%" }} />

@@ -10,9 +10,9 @@ import "./Chat.css";
 let socket: SocketIOClient.Socket;
 
 const Chat: React.FC<ILocation> = ({ location }) => {
-	const [name, setName] = useState("");
-	const [room, setRoom] = useState<Room>("");
-	const [users, setUsers] = useState<IUsers>([]);
+	const [name, setName] = useState<any>("");
+	const [room, setRoom] = useState<any>("");
+	const [users, setUsers] = useState<any>("");
 	const [message, setMessage] = useState<any>("");
 	const [messages, setMessages] = useState<IMessages>([]);
 	const ENDPOINT = `localhost:5000`;
@@ -56,8 +56,8 @@ const Chat: React.FC<ILocation> = ({ location }) => {
 					setMessage={setMessage}
 					sendMessage={sendMessage}
 				/>
-				<TextContainer users={users} />
 			</div>
+			<TextContainer users={users} />
 		</div>
 	);
 };
